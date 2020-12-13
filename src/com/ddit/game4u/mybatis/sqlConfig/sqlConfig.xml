@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="com/ddit/game4u/properties/db.properties" />
+	
+	<typeAliases>
+		<typeAlias type="java.lang.String" alias="str"/>
+		<typeAlias type="java.lang.Integer" alias="int"/>
+		
+		<typeAlias type="com.ddit.game4u.dto.MemberVO" alias="member"/>
+		<typeAlias type="com.ddit.game4u.dto.MenuVO" alias="menu"/>
+		<typeAlias type="com.ddit.game4u.dto.GameVO" alias="game"/>
+		<typeAlias type="com.ddit.game4u.dto.CardVO" alias="card"/>
+	</typeAliases>
+	
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED"> 
+		        <property name="driver" value="${driverClassName}"/>
+		        <property name="url" value="${url}"/>
+		        <property name="username" value="${username}"/>
+		        <property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+  <mappers>
+ 	<mapper resource="com/ddit/game4u/mybatis/mappers/Member-Mapper.xml"/> 
+ 	<mapper resource="com/ddit/game4u/mybatis/mappers/Menu-Mapper.xml"/> 
+ 	<mapper resource="com/ddit/game4u/mybatis/mappers/Game-Mapper.xml"/> 
+ 	<mapper resource="com/ddit/game4u/mybatis/mappers/Card-Mapper.xml"/> 
+  </mappers>
+</configuration>

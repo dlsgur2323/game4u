@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Member-Mapper">
+	<select id="getMemberByEmail" parameterType="str" resultType="member">
+		select * 
+		from gu_users 
+		where email=#{email}
+	</select>
+	
+	<update id="insertMember" parameterType="member">
+		INSERT
+		INTO gu_users (email, pwd, name)
+		values (#{email}, #{pwd}, #{name})
+	</update>
+	
+	<update id="updateMember" parameterType="member">
+		UPDATE gu_users
+		SET name = #{name}, pwd = #{pwd}
+		WHERE email=#{email}
+	</update>
+	
+	<update id="updatePicture" parameterType="member">
+		UPDATE gu_users
+		SET picture = #{picture}
+		WHERE email=#{email}
+	</update>
+	
+</mapper>

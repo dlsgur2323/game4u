@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<context-param>
+		<param-name>sqlSessionFactory</param-name>
+		<param-value>com.ddit.game4u.mybatis.OracleMyBatisSqlSessionFactory</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>memberService</param-name>
+		<param-value>com.ddit.game4u.service.MemberServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>memberDAO</param-name>
+		<param-value>com.ddit.game4u.dao.MemberDAOImpl</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>gameService</param-name>
+		<param-value>com.ddit.game4u.service.GameServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>gameDAO</param-name>
+		<param-value>com.ddit.game4u.dao.GameDAOImpl</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>menuService</param-name>
+		<param-value>com.ddit.game4u.service.MenuServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>menuDAO</param-name>
+		<param-value>com.ddit.game4u.dao.MenuDAOImpl</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>cardService</param-name>
+		<param-value>com.ddit.game4u.service.CardServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>cardDAO</param-name>
+		<param-value>com.ddit.game4u.dao.CardDAOImpl</param-value>
+	</context-param>
+
+
+	<servlet>
+		<servlet-name>FrontServlet</servlet-name>
+		<servlet-class>com.ddit.game4u.dispatcher.FrontServlet</servlet-class>
+		<init-param>
+			<param-name>handlerMapper</param-name>
+			<param-value>com.ddit.game4u.dispatcher.HandlerMapper</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FrontServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>com.ddit.game4u.listener.ApplicationContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>sqlSessionFactory</param-name>
+		<param-value>com.ddit.game4u.mybatis.OracleMyBatisSqlSessionFactory</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>setCharacterEncodingFilter</filter-name>
+		<filter-class>
+			org.apache.catalina.filters.SetCharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>setCharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>
+			com.opensymphony.sitemesh.webapp.SiteMeshFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+</web-app>
