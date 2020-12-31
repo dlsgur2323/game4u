@@ -221,11 +221,15 @@
 			                            			<p style="margin-bottom:0">우편번호</p>
 				                            		<input type="text" class="form-control" readonly placeholder="Addr" id="zip">
 			                            		</div>
+			                            		<div class="col-4 card-info" style="padding-left:0px;">
+			                            			<p style="margin-bottom:0">&nbsp;</p>
+				                            		<input type="button" class="btn btn-primary" value="우편번호 찾기" onclick="DaumPostcode();">
+			                            		</div>
 		                            		</div>
 		                            		<div class="row">
 			                            		<div class="col-7 card-info">
 			                            		<p style="margin-bottom:0">주소</p>
-				                            		<input type="text" class="form-control" readonly placeholder="Addr" id="add1">
+				                            		<input type="text" class="form-control" readonly placeholder="Addr" id="addr1">
 			                            		</div>
 			                            		<div class="col-5 card-info">
 			                            		<p style="margin-bottom:0">상세주소</p>

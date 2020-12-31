@@ -1,0 +1,40 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Cart-Mapper">
+	<select id="getCartList" parameterType="str" resultType="cart">
+		select cartno, gno from gu_cart where email=#{email}
+	</select>
+	<update id="addCart" parameterType="cart">
+		insert into gu_cart(cartno,gno,email) values(#{cartno},#{gno},#{email})
+	</update>
+	<select id="getCartNo" resultType="int">
+		select gu_cart_seq.nextval from dual
+	</select>
+	<update id="deleteCart" parameterType="int">
+		delete gu_cart where cartno = #{cartno}
+	</update>
+	<select id="getCartGameInfo" parameterType="int" resultType="game">
+		select gname, price, sprice, thumbnail, startdate, enddate from gu_game where gno = #{gno}
+	</select>
+	<update id="increaseSalesRate" parameterType="int">
+		UPDATE gu_game SET salerate = salerate + 1 WHERE gno = #{gno}
+	</update>
+	<update id="addToLibrary" parameterType="library">
+		INSERT INTO gu_library(libno,gno,cardno,email,price,buydate) VALUES(#{libno},#{gno},#{cardno},#{email},#{price},SYSDATE)
+	</update>
+	<select id = "getLibraryNo" resultType="int">
+		SELECT gu_library_seq.nextval FROM dual
+	</select>
+	<select id="getAdGameList" resultType="game">
+		 <![CDATA[ SELECT gno, gname, price, sprice, startdate, enddate, thumbnail FROM gu_game WHERE startdate <= SYSDATE and enddate >= SYSDATE ]]> 
+	</select>
+	<select id="getInfoForPay" parameterType="int" resultType="game">
+		SELECT gno, price, sprice, startdate, enddate FROM gu_game WHERE gno = (
+		SELECT gno FROM gu_cart WHERE cartno = #{cartno} )
+	</select>
+	<select id="checkLib" resultType ="int">
+		SELECT COUNT(gno) FROM gu_library WHERE gno=#{gno} and email=#{email} 
+	</select>
+</mapper>

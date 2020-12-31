@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Library-Mapper">
+
+	<sql id="sort">
+		<if test="sort == 'buydateDESC'.toString()">
+			ORDER BY buydate DESC
+		</if>
+		<if test="sort == 'buydateASC'.toString()">
+			ORDER BY buydate ASC
+		</if>
+		<if test="sort == 'gnameASC'.toString()">
+			ORDER BY gname ASC
+		</if>
+	</sql>
+
+	<select id="selectLibraryByEmail" resultType="game">
+		SELECT A.gno gno, A.buydate buydate, B.gname gname, B.thumbnail thumbnail 
+		FROM 
+		     (SELECT gno, buydate
+		      FROM gu_library
+		      WHERE email = #{email})A, gu_game B
+		WHERE A.gno = B.gno
+		<include refid="sort"/>
+	</select>
+
+</mapper>

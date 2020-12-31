@@ -11,6 +11,9 @@
 <meta charset="UTF-8">
 <title><decorator:title default="Game4U" /></title>
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/store.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/assets/fonts/ionicons.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/assets/css/untitled.css">
@@ -22,6 +25,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+
+<style>
+
+
+</style>
 
 <decorator:head />
 </head>

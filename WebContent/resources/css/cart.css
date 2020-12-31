@@ -1,0 +1,159 @@
+@charset "UTF-8";
+.portfolio-block form {
+    padding: 20px 50px;
+}
+.tableDiv{
+	float : left;
+	margin-right : 20px;
+}
+.adDiv{
+	float : left;
+	width : 40%;	
+	clear : left;
+}
+.check-box{
+	padding : 40px 0px;
+}
+.cart .thumbnail{
+	margin : 0px 50px;
+}
+.price-info{    
+    padding: 15px 0px;
+}
+#selectAllBtn{
+	position: relative;
+    margin-bottom: 10px;
+    left: 6%;
+    font-size: 0.8em;
+}
+.price{
+	text-align : right;
+	color : gray;
+}
+.price-span{
+	text-decoration : line-through;
+}
+.sprice-span,.spercent-span{
+	font-size : 1.3em;
+}
+.spercent-span{
+	color : #7f70f5;
+}
+.cart > .thumbnail{
+	margin: 0px 10px 0px 15px;
+    height: 100px;
+    width: 180px;
+}
+.game-name{
+	padding: 39px 0px;
+	width: 245px;
+}
+.usercarts{
+	float : left;
+}
+.adlists{
+	float: right;
+}
+.ad-thumbnail{
+	width: 270px;
+    height: 150px;
+}
+.page-footer{
+	clear : both;
+}
+.portfolio-block form {
+    max-width: 700px;
+    margin-bottom : 30px;
+}
+
+.totprice, .buttons{
+	clear: both;
+    padding: 0px 400px;
+    margin-bottom: 65px;
+}
+.buttons{
+	padding: 0px 0px 0px 550px;
+}
+
+.currencydiv, #totalprice{
+	position: relative;
+    left: 55%;
+}
+.curspan, #totalprice{
+    border: none;
+}
+
+#libraryBtn, #purchaseBtn{
+	border-radius : 5px;
+}
+#libraryBtn{
+	background-color : #e5bae6;
+	border : none;
+	color : white;
+}
+#libraryBtn:hover{
+	background-color : #dc87de;
+}
+#purchaseBtn{
+	margin : 0px 0px 0px 10px;
+}
+
+#totalprice{
+	width : 100px;
+	background-color : aliceblue;
+	color : gray;
+	font-size : 1.2em;
+	text-align : center;
+}
+.removeBtn:hover{
+	opacity: 90%;
+    cursor: pointer;
+}
+.custom-select{
+	width : 150px;
+	margin-bottom: 10px;
+}
+.mcardno{
+    margin: 3px 5px 3px 0px;
+    padding: 0px;
+}
+.mcardinfo{
+	margin-bottom : 20px;
+}
+.paymodal{
+	padding : 20px;
+}
+#bfinprice{
+	border : none;
+	text-decoration : underline;
+	font-size : 1.2em;
+	color : #7f70f5; 
+	text-align : right;
+}
+#cardcompanies{	
+    margin-left: 20px;
+}
+label{
+	font-size : 0.8em;	
+}
+.modaltitlerow{
+	margin-left : 1.5px;
+	margin-bottom : -5px;	
+}
+.modaltitle{
+	text-align : right;
+	color : #7f70f5;
+	font-size : 1.2em;
+	text-decoration : underline;
+}
+.mnamerow{
+	margin-top : -10px;
+}
+.no-cart-list{
+	padding : 0px 0px 0px 155px;
+}
+#libraryBtn2{
+	margin : 20px;
+	color : white;
+	font-size : 1.2em;
+}

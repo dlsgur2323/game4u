@@ -24,8 +24,8 @@ public class PictureUploadAction implements Action{
 	
 	// 업로드 파일 환경 설정
 	private static final int MEMORY_THRESHOLD = 1024 * 500; // 500KB
-	private static final int MAX_FILE_SIZE = 1024 * 1024 * 2; // 2MB
-	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 4; // 4MB
+	private static final int MAX_FILE_SIZE = 1024 * 1024 * 2; // 1MB
+	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 4; // 2MB
 	
 	private MemberService memberService;
 	public void setMemberService(MemberService memberService) {
@@ -70,7 +70,7 @@ public class PictureUploadAction implements Action{
 		
 		File file = new File(uploadPath);
 		if (!file.mkdirs()) {
-			System.out.println(uploadPath + "가 이미 존재하거나 실패했습니다.");		
+			System.out.println(uploadPath + "가 이미 존재하거나 실패했습니다.");	
 		};
 		
 		String picture= "";

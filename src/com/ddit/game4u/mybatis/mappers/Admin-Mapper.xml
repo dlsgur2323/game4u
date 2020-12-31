@@ -1,0 +1,144 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Admin-Mapper">
+	
+	<!-- 게임번호 시퀀스 -->
+	<select id="selectGameSeqNext" resultType="int">
+		select gu_game_seq.nextval as gno from dual
+	</select>
+	
+	<!-- 업체 가져오기 -->
+	<select id="selectCompany" resultType="str">
+		select * 
+		from gu_company
+	</select>
+	
+	<!-- os 가져오기 -->
+	<select id="selectOS" resultType="str">
+		select * 
+		from gu_os
+	</select>
+	
+	<!-- 하드웨어_프로세서 가져오기 -->
+	<select id="selectProcessor" resultType="hardware">
+		select * 
+		from gu_hardware
+		where kind = 'processor'
+	</select>
+	
+	<!-- 하드웨어_그래픽 가져오기 -->
+	<select id="selectGraphic" resultType="hardware">
+		select * 
+		from gu_hardware
+		where kind = 'graphic'
+	</select>
+	
+	<!-- 태그 가져오기 -->
+	<select id="selectTagCategory" resultType="tagkind">
+		select * 
+		from gu_tagkind
+		where category = '카테고리'
+	</select>
+	
+	<select id="selectTagFunction" resultType="tagkind">
+		select * 
+		from gu_tagkind
+		where category = '기능'
+	</select>
+	
+	<!-- 사진 업로드 -->
+	<update id="updateThumbnail" parameterType="game">
+		UPDATE gu_game
+		SET thumbnail = #{thumbnail}
+		WHERE gno= #{gno}
+	</update>
+
+	
+	<sql id="enddate">
+		<if test="enddate == null">
+			null
+		</if>
+		<if test="enddate != null">
+			#{enddate}
+		</if>
+	</sql>
+	<sql id="startdate">
+		<if test="startdate == null">
+			null
+		</if>
+		<if test="startdate != null">
+			#{startdate}
+		</if>
+	</sql>
+	
+	<!-- 게임등록 -->	
+	<update id="registGame">
+		insert 
+		into 
+		gu_game(gno,gname,thumbnail,simcontent,content,reldate,developer,distributor,price,sprice,startdate,enddate)
+		values
+		(#{gno},#{gname},#{thumbnail},#{simcontent},#{content},#{reldate},#{developer},#{distributor},#{price},#{sprice},<include refid="startdate"/>,<include refid="enddate"/>)
+	</update>
+	
+	
+	<update id="insertPicture">
+		INSERT INTO GU_GAMEPICTURE(PICNO, GNO, PICTURE)
+		VALUES (gu_gamepicture_seq.nextval, #{gno}, #{picture})
+	</update>
+	
+	<update id="insertTag">
+		INSERT INTO GU_TAG(tagno, tagname, gno)
+		VALUES (gu_tag_seq.nextval, #{tagname}, #{gno})
+	</update>
+	
+	<update id="insertSystem">
+		INSERT INTO GU_system(SYSNO, GNO, OS, MEMORY, GRAPHIC1, GRAPHIC2, PROCESSOR1, PROCESSOR2, DISK, DIRECTX)
+		VALUES (gu_system_seq.nextval, #{gno}, #{os}, #{memory}, #{graphic1}, #{graphic2}, #{processor1}, #{processor2}, #{disk}, #{directx})
+	</update>
+	
+	<update id="insertTagKind" parameterType="tagkind">
+		INSERT INTO gu_tagkind(tagname, category)
+		values(#{tagname}, #{category})
+	</update>
+	
+	<update id="registCorp" parameterType="str">
+		INSERT INTO gu_company(comname)
+		values(#{corp})
+	</update>
+	
+	<update id="deletePicture">
+		DELETE FROM gu_gamepicture
+		WHERE picno = #{picno}
+	</update>
+
+	<update id="deleteTag">
+		DELETE FROM gu_tag
+		WHERE gno = #{gno}
+	</update>
+
+	<update id="updateGame">
+		UPDATE gu_game
+		SET gname = #{gname}, thumbnail = #{thumbnail}, simcontent = #{simcontent}, content = #{content}, reldate = #{reldate},
+		developer = #{developer}, distributor = #{distributor}, price = #{price}, sprice = #{sprice}, startdate = <include refid="startdate"/>, enddate = <include refid="enddate"/>
+		WHERE gno = #{gno}
+	</update>
+
+	<update id="deleteSystem">
+		DELETE FROM gu_system
+		WHERE gno = #{gno}
+	</update>
+	
+	<update id="insertHardWare">
+		INSERT INTO gu_hardware(name, kind)
+		values(#{name}, #{kind})
+	</update>
+	
+	
+	
+	
+	
+	
+	
+</mapper>

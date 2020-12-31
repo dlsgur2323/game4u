@@ -1,0 +1,29 @@
+package com.ddit.game4u.action.cart;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ddit.game4u.action.Action;
+import com.ddit.game4u.service.CartService;
+
+public class CartRemoveAction implements Action {
+
+	private CartService service;
+	public void setCartService(CartService service) {
+		this.service = service;
+	}
+	
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "";
+		System.out.println("hihihihihihihhihi");
+		int cartNo = Integer.parseInt(request.getParameter("cartNo"));
+		service.deleteCart(cartNo);
+		return url;
+	}
+
+}

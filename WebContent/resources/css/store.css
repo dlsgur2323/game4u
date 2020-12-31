@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.dsadsad{
+	display: inline-block;
+	cursor: pointer; 
+	margin: 12px 2px; 
+	width: 15px; 
+	height: 9px; 
+	border-radius: 2px; 
+	transition: background-color 0.2s; 
+	background-color: hsla(202, 60%, 100%, 0.2);
+}

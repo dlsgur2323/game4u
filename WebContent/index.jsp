@@ -5,5 +5,5 @@
 
 
 <script>
-	location.href="iframe.do";
+	location.href="<%=request.getContextPath()%>/store/iframe.do";
 </script>

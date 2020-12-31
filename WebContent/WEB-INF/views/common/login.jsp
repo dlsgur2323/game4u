@@ -14,10 +14,8 @@
 					<h3 id="masonry" style="font-weight: bold; background: -webkit-linear-gradient(#eee, #6091ef); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Game4U</h3>
 
 
-					<form action="<%=request.getContextPath()%>/member/login.do" method="post">
-
 					<div style="padding: 5px;">
-						<input type="email" " class=" form-control" id="email" name="email" placeholder=" 이메일" style="width: 280px; border-radius: 10px; margin: auto;">
+						<input type="email" " class=" form-control" id="log_email" name="email" placeholder=" 이메일" style="width: 280px; border-radius: 10px; margin: auto;">
 					</div>
 
 					<div id="login-email-error" style="font-size: 12px; width: 280px; height: 30px; margin: auto; display: none;">
@@ -35,7 +33,7 @@
 							style="border: 0; outline: 0; background: none; cursor: pointer; text-align: left; color: #e60023; font-size: 12px; padding: 0px;" value="올바르지 않은 비밀번호를 입력했습니다.">
 						</a>
 					</div>
-
+			
 					<div style="font-size: 14px; width: 280px; height: 30px; margin: auto;">
 						<a> <input type="text" class="form-control form-control-sm" placeholder="비밀번호를 잊으셨나요?" name="text1" readonly style="border: 0; outline: 0; background: none; cursor: pointer; padding: 0px;">
 						</a>
@@ -43,11 +41,8 @@
 					</div>
 
 					<div style="padding: 5px;">
-						<button type="submit" class="btn btn-info" style="width: 280px; display: block; margin: auto; border-radius: 10px;">로그인</button>
+						<button type="button" onclick="login();" class="btn btn-info" style="width: 280px; display: block; margin: auto; border-radius: 10px;">로그인</button>
 					</div>
-					
-					</form>
-
 					<div style="font-size: 14px; width: 464px; height: 30px; margin: auto;">
 						<a> <input type="text" class="form-control form-control-sm" placeholder="아직 Game4U를 사용하고 있지 않으신가요? 가입하기" name="text1" readonly
 							style="border: 0; outline: 0; background: none; cursor: pointer; text-align: center; padding: 0px;">
@@ -58,3 +53,38 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function login(){
+		var email = $('#log_email').val();
+		var pwd = $('#password').val();
+		$.ajax({
+			url : "<%=request.getContextPath()%>/common/login.do",
+			type : "post",
+			data : {
+					 "email" : email ,
+					 "pwd" : pwd	 
+					},
+			success : function(data){
+				var res = data;
+				console.log(res);
+				if(res == "ok"){
+					location.href="<%=request.getContextPath()%>/";
+				};
+				if(res == "no"){
+					alert("로그인 정보가 일치하지 않습니다.");
+				};
+			},
+			error : function(){
+				
+			}
+		})
+	}
+
+</script>
+
+
+
+
+
+

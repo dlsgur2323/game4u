@@ -37,6 +37,15 @@
 	</context-param>
 	
 	<context-param>
+		<param-name>adminService</param-name>
+		<param-value>com.ddit.game4u.service.AdminServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>adminDAO</param-name>
+		<param-value>com.ddit.game4u.dao.AdminDAOImpl</param-value>
+	</context-param>
+	
+	<context-param>
 		<param-name>cardService</param-name>
 		<param-value>com.ddit.game4u.service.CardServiceImpl</param-value>
 	</context-param>
@@ -44,7 +53,54 @@
 		<param-name>cardDAO</param-name>
 		<param-value>com.ddit.game4u.dao.CardDAOImpl</param-value>
 	</context-param>
+	
+	<context-param>
+		<param-name>storeService</param-name>
+		<param-value>com.ddit.game4u.service.StoreServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>storeDAO</param-name>
+		<param-value>com.ddit.game4u.dao.StoreDAOImpl</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>tagkindService</param-name>
+		<param-value>com.ddit.game4u.service.TagkindServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>tagkindDAO</param-name>
+		<param-value>com.ddit.game4u.dao.TagkindDAOImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>cartService</param-name>
+		<param-value>com.ddit.game4u.service.CartServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>cartDAO</param-name>
+		<param-value>com.ddit.game4u.dao.CartDAOImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>libraryService</param-name>
+		<param-value>com.ddit.game4u.service.LibraryServiceImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>libraryDAO</param-name>
+		<param-value>com.ddit.game4u.dao.LibraryDAOImpl</param-value>
+	</context-param>
 
+	<filter>
+	   <filter-name>loginCheckFilter</filter-name>
+	   <filter-class>com.ddit.game4u.filter.LoginCheckFilter</filter-class>
+	   <load-on-startup>1</load-on-startup>
+	   <init-param>
+	     <param-name>exclude</param-name>
+	     <param-value>common,store</param-value>
+	   </init-param>
+	 </filter>
+	 <filter-mapping>
+	   <filter-name>loginCheckFilter</filter-name>
+	   <url-pattern>*.do</url-pattern>
+	 </filter-mapping>  
 
 	<servlet>
 		<servlet-name>FrontServlet</servlet-name>

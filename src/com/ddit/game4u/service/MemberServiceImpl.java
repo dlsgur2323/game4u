@@ -35,11 +35,7 @@ public class MemberServiceImpl implements MemberService{
 				isAdmin = true;
 			}
 			if(encryptedPwd.equals(user.getPwd())) {
-				if(!isAdmin) {
-					result = "ok";
-				}else {
-					result = "admin";
-				}
+				result = "ok";
 				session.setAttribute("loginUser", user);
 				session.setMaxInactiveInterval(6*60); 
 			}else { // 패스워드 불일치시
@@ -48,7 +44,6 @@ public class MemberServiceImpl implements MemberService{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}catch (Exception e) {
-			e.printStackTrace();
 		}
 		
 		return result;

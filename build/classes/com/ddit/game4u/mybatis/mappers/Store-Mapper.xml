@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Store-Mapper">
+	
+	<select id="selectResultList" parameterType="hashmap" resultType="gameAndTags">
+		
+		SELECT gno, gname, relDate, price, sprice, startDate, endDate, thumbnail, tagnames, os
+		FROM
+			(SELECT ROWNUM as rown, v.*
+			 FROM 
+				(SELECT gno, gname, relDate, price, sprice, startDate, endDate, thumbnail,
+			            (SELECT LISTAGG(tagname, ',') WITHIN GROUP(ORDER BY tagname) FROM gu_tag t WHERE t.gno = g.gno) AS tagnames,
+			            (SELECT LISTAGG(os, ',') WITHIN GROUP(ORDER BY os) FROM gu_system s WHERE s.gno = g.gno) AS os
+				 FROM gu_game g
+				 ORDER BY ${order} ${by}) v
+			 WHERE upper(gname) LIKE '%'||upper(#{keyword})||'%' AND
+			 <foreach collection="tagnames" item="tag" index="index"  open="" close="" separator="AND">
+	             tagnames LIKE '%'||#{tag}||'%'
+	         </foreach>
+	         AND
+			 <foreach collection="os" item="ostag" index="ind"  open="" close="" separator="AND">
+	             os LIKE '%'||#{ostag}||'%'
+	         </foreach> 
+	         )
+		WHERE rown ${page} 20
+	    
+	</select>
+	
+</mapper>

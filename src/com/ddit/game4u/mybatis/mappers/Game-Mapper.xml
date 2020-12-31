@@ -7,32 +7,59 @@
 	<select id="getPopularList" resultType="game">
 		SELECT gno, gname, price, thumbnail, developer, simContent
 		FROM (SELECT gno, gname, price, thumbnail, developer, simContent FROM gu_game ORDER BY salerate DESC)
-		WHERE ROWNUM <![CDATA[ < ]]> 10
+		WHERE ROWNUM <![CDATA[ < ]]> 4
 	</select>
 	
 	<select id="getNewList" resultType="game">
 		SELECT gno, gname, price, thumbnail, developer
 		FROM (SELECT gno, gname, price, thumbnail, developer FROM gu_game ORDER BY reldate DESC)
-		WHERE ROWNUM <![CDATA[ < ]]> 4
+		WHERE ROWNUM <![CDATA[ < ]]> 5
 		
 	</select>
 	
 	<select id="getSaleList" resultType="game">
-		SELECT gno, gname, price, thumbnail, developer
+		SELECT gno, gname, price, thumbnail, developer, startdate, enddate, sprice
 		FROM
-		 	(SELECT gno, gname, price, thumbnail, developer
-		 	 FROM gu_game 
-		 	 WHERE sysdate BETWEEN startdate and enddate 
-		 	 ORDER BY salerate DESC)
-		WHERE ROWNUM <![CDATA[ < ]]> 12
+		    (SELECT gno, gname, price, thumbnail, developer, startdate, enddate, sprice
+		     FROM gu_game 
+		     WHERE sysdate BETWEEN startdate and enddate 
+		     ORDER BY salerate DESC)
+		WHERE ROWNUM <![CDATA[ < ]]> 4
 	
 	</select>
 	
 	<select id="getFreeList" resultType="game">
 		SELECT gno, gname, thumbnail, developer
 		FROM (SELECT gno, gname, price, thumbnail, developer FROM gu_game WHERE price = 0 ORDER BY salerate DESC)
-		WHERE ROWNUM <![CDATA[ < ]]> 4
+		WHERE ROWNUM <![CDATA[ < ]]> 5
 	
 	</select>
+	
+	
+	<!-- 선영 -->
+	<select id="selectGameByGno" resultType="game">
+		SELECT * 
+		FROM gu_game
+		where gno = #{gno}
+	</select>
+	
+	<select id="selectSystemByGno" resultType="system">
+		SELECT * 
+		FROM gu_system
+		where gno = #{gno}
+	</select>
+	
+	<select id="selectTagByGno" resultType="tag">
+		SELECT * 
+		FROM gu_tag
+		where gno = #{gno}
+	</select>
+	
+	<select id="selectGamePictureByGno" resultType="gamePicture">
+		SELECT * 
+		FROM gu_gamepicture
+		where gno = #{gno}
+	</select>
+	
 	
 </mapper>

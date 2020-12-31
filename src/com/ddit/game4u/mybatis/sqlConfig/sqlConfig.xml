@@ -10,10 +10,23 @@
 		<typeAlias type="java.lang.String" alias="str"/>
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		
+		<typeAlias type="com.ddit.game4u.dto.GameVO" alias="game"/>
 		<typeAlias type="com.ddit.game4u.dto.MemberVO" alias="member"/>
 		<typeAlias type="com.ddit.game4u.dto.MenuVO" alias="menu"/>
-		<typeAlias type="com.ddit.game4u.dto.GameVO" alias="game"/>
+		
+		<typeAlias type="com.ddit.game4u.dto.SystemVO" alias="system"/>
+		<typeAlias type="com.ddit.game4u.dto.TagVO" alias="tag"/>
+		<typeAlias type="com.ddit.game4u.dto.GamepictureVO" alias="gamepicture"/>
+		<typeAlias type="com.ddit.game4u.dto.HardwareVO" alias="hardware"/>
+		
+		<typeAlias type="com.ddit.game4u.dto.LibraryVO" alias="library"/>
 		<typeAlias type="com.ddit.game4u.dto.CardVO" alias="card"/>
+		<typeAlias type="com.ddit.game4u.dto.CartVO" alias="cart"/>
+		<typeAlias type="com.ddit.game4u.dto.TagkindVO" alias="tagkind"/>
+		<typeAlias type="com.ddit.game4u.request.GameAndTagsRequest" alias="gameAndTags"/>
+
+		
+		
 	</typeAliases>
 	
 	<environments default="dev">
@@ -28,10 +41,20 @@
 		</environment>
 	</environments>
 	
+	
   <mappers>
- 	<mapper resource="com/ddit/game4u/mybatis/mappers/Member-Mapper.xml"/> 
- 	<mapper resource="com/ddit/game4u/mybatis/mappers/Menu-Mapper.xml"/> 
- 	<mapper resource="com/ddit/game4u/mybatis/mappers/Game-Mapper.xml"/> 
- 	<mapper resource="com/ddit/game4u/mybatis/mappers/Card-Mapper.xml"/> 
+    <mapper resource="com/ddit/game4u/mybatis/mappers/Game-Mapper.xml"/>
+    <mapper resource="com/ddit/game4u/mybatis/mappers/Member-Mapper.xml"/>
+    <mapper resource="com/ddit/game4u/mybatis/mappers/Menu-Mapper.xml"/>
+    
+    <mapper resource="com/ddit/game4u/mybatis/mappers/Admin-Mapper.xml"/>
+    
+     <mapper resource="com/ddit/game4u/mybatis/mappers/Cart-Mapper.xml"/> 
+     <mapper resource="com/ddit/game4u/mybatis/mappers/Card-Mapper.xml"/> 
+ 	<mapper resource="com/ddit/game4u/mybatis/mappers/Store-Mapper.xml"/> 
+ 	<mapper resource="com/ddit/game4u/mybatis/mappers/Tag-Mapper.xml"/> 
+ 	<mapper resource="com/ddit/game4u/mybatis/mappers/Library-Mapper.xml"/> 
+ 
   </mappers>
+  
 </configuration>

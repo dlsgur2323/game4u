@@ -1,7 +1,7 @@
 <decorators defaultdir="/WEB-INF/views/decorators">
 
 	<decorator name="iframeOut" page="iframeOut_decorator.jsp">
-		<pattern>/iframe.do</pattern>
+		<pattern>/store/iframe.do</pattern>
 	</decorator>
 	
 	<decorator name="normal" page="normal_decorator.jsp">
@@ -9,8 +9,9 @@
 	</decorator>
 	
 	<decorator name="iframeIn" page="iframeIn_decorator.jsp">
-		<pattern>/common/store.do</pattern>
-	</decorator> 
+		<pattern>/store/store.do</pattern>
+		<pattern>/store/list.do</pattern>
+	</decorator>
 	
 <!-- 	<excludes> -->
 <!-- 		<pattern>/common/log*</pattern> -->
